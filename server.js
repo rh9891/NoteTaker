@@ -33,6 +33,7 @@ app.get("/api/notes", (req, res) => {
 app.post("/api/notes", (req, res) => {
     fs.readFile("/db/db.json", (err, data) => {
         console.log(data);
+        // Creates a variable to get information from the "db.json" file, which is the array of notes. FS reads things as string, so JSON.parse() is needed to convert.
         notesArray = JSON.parse(data);
       });
     
@@ -42,6 +43,7 @@ app.post("/api/notes", (req, res) => {
     console.log(newNote);
     notesArray.push(newNote);
   
+    // To write the file, the array of notes is passed as the second argument. FS reads things as string, so JSON.stringify() is needed to convert.
     fs.writeFile("/db/db.json", JSON.stringify(notesArray), (err) => {
         if (err) throw err;
         console.log("New note has been saved!");
