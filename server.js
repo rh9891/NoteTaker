@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3333;
 // The Node.js file system module allows users to work with the file system on their computer using the require() method.
 const fs = require("fs");
 
-var notes = [];
+var notesArray = [];
 
 // Sets up the Express.js application to handle data parsing.
 app.use(express.urlencoded({ extended: true }));
@@ -31,18 +31,21 @@ app.get("/api/notes", (req, res) => {
 
 // This is the route that receives a new note to save on the request body, adds it to the "db.json" file, and then returns the new note to the user.
 app.post("/api/notes", (req, res) => {
+    fs.readFile("/db/db.json", (err, data) => {
+        console.log(data);
+        notesArray = JSON.parse(data);
+      });
+    
     // The req.body is equal to the JSON post sent from the user. This works because of the body parsing middleware.
     var newNote = req.body;
     
     console.log(newNote);
+    notesArray.push(newNote);
   
-    notes.push(newNote);
-  
-    res.json(newNote);
-
-    fs.writeFile("/db/db.json", newNote, (err) => {
+    fs.writeFile("/db/db.json", JSON.stringify(notesArray), (err) => {
         if (err) throw err;
         console.log("New note has been saved!");
+        res.json(newNote);
       });
   });
 
