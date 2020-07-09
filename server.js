@@ -1,23 +1,27 @@
+// Dependencies
 const express = require("express");
 const path = require("path");
 
 const app = express();
+
+// Port
 const PORT = process.env.PORT || 3333;
 
 // The Node.js file system module allows users to work with the file system on their computer using the require() method.
 const fs = require("fs");
 
+// Empty array for notes that the user will input.
 var notesArray = [];
 
 // Sets up the Express.js application to handle data parsing.
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Routes
-// =============================================================
-
 // Built-in middleware that enables the use of static files. 
 app.use(express.static("public"));
+
+// Routes
+// =============================================================
 
 // This route returns the "notes.html" file.
 app.get("/notes", (req, res) => {
@@ -34,15 +38,9 @@ app.get("/api/notes", (req, res) => {
     });
 });
 
-
 // This is the route that receives a new note to save on the request body, adds it to the "db.json" file, and then returns the new note to the user.
 app.post("/api/notes", (req, res) => {
     console.log("Save routes are locating array of notes.")
-    fs.readFile(path.join(__dirname, "/db/db.json"), (err, data) => {
-        console.log(data);
-        // Creates a variable to get information from the "db.json" file, which is the array of notes. FS reads things as string, so JSON.parse() is needed to convert.
-        notesArray = JSON.parse(data);
-      });
     
     var newNoteID = 0;
         if(notesArray.length > 0) {
