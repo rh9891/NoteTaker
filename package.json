@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/rh9891/NoteTaker/issues"
   },
-  "homepage": "https://github.com/rh9891/NoteTaker#readme"
+  "homepage": "https://github.com/rh9891/NoteTaker#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

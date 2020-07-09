@@ -21,7 +21,7 @@ app.use(express.static("public"));
 
 // This route returns the "notes.html" file.
 app.get("/notes", (req, res) => {
-    res.sendFile(path.join(__dirname, "/public/notes.html"));
+    res.sendFile(path.join(__dirname, "/Develop/public/notes.html"));
 });
 
 // This route reads the "db.json" file and returns all the saved notes as JSON.
@@ -54,14 +54,30 @@ app.post("/api/notes", (req, res) => {
 // * DELETE `/api/notes/:id` - Should receive a query parameter containing the id of a note to delete.
 // This means you'll need to find a way to give each note a unique `id` when it's saved. 
 // In order to delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
-// app.delete("/api/notes/:id", (req, res) => {
-//     var deleteNote = req.params.id;
+app.delete("/api/notes/:id", (req, res) => {
+    fs.readFile("/db/db.json", (err, data) => {
+        console.log(data);
+        // Creates a variable to get information from the "db.json" file, which is the array of notes. FS reads things as string, so JSON.parse() is needed to convert.
+        notesArray = JSON.parse(data);
+      });
+    
+    var deletedNote = req.params.id;
+    
+    notesArray = notesArray.filter(() => {
+    
+    });
 
-//   });
+    console.log(notesArray)
+
+    fs.writeFile("./db/db.json", JSON.stringify(deletedNotes), (err) => {
+        if (err) throw err;
+        res.json(deletedNotes);
+    });
+});
 
 // This is the "catch-all" route that returns the user to the "index.html" file. It should display on the bottom as the last get route.
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/public/index.html"));
+    res.sendFile(path.join(__dirname, "/Develop/public/index.html"));
 });
 
 // Starts the server to begin listening on the port.
