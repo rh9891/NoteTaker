@@ -34,6 +34,12 @@ app.get("/api/notes", (req, res) => {
     });
 });
 
+var id = 3;
+
+var id = () => {
+    id++
+}
+
 // This is the route that receives a new note to save on the request body, adds it to the "db.json" file, and then returns the new note to the user.
 app.post("/api/notes", (req, res) => {
     console.log("Save routes are locating array of notes.")
@@ -44,7 +50,7 @@ app.post("/api/notes", (req, res) => {
       });
     
     // The req.body is equal to the JSON post sent from the user. This works because of the body parsing middleware.
-    var newNote = req.body;
+    var newNote = {id: id(), title: req.body.title, text:req.body.text}
     
     console.log(newNote);
     notesArray.push(newNote);
