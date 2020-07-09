@@ -65,20 +65,11 @@ app.post("/api/notes", (req, res) => {
 
 // This route receives a query parameter containing the id of a note to delete. Each note is given a unique `id` when it is saved. In order to delete a note, this route reads all notes from the `db.json` file, removes the note with the given `id` property, and then rewrites the notes to the `db.json` file.
 app.delete("/api/notes/:id", (req, res) => {
-    fs.readFile("db/db.json", (err, data) => {
-        console.log(data);
-        // Creates a variable to get information from the "db.json" file, which is the array of notes. FS reads things as string, so JSON.parse() is needed to convert.
-        notesArray = JSON.parse(data);
-      });
-    
     var id = parseInt(req.params.id);
-      console.log(parseInt(req.params.id))
-    for (var i = 0; i < notesArray.length; i++) {
-        if (id === notesArray[i].id) {
-            notesArray.splice(i, 1);
-            return;
-    }};
-
+      console.log(parseInt(req.params.id));
+    
+    var updatedNotes = notesArray.filter(elem => elem.id!== id);
+    notesArray = updatedNotes;
     fs.writeFile("db/db.json", JSON.stringify(notesArray), (err) => {
         if (err) throw err;
         res.send(notesArray);
