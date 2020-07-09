@@ -71,18 +71,17 @@ app.delete("/api/notes/:id", (req, res) => {
         notesArray = JSON.parse(data);
       });
     
-    var deletedNote = req.params.id;
-    console.log("id: ", deletedNote);
-    
-    notesArray = notesArray.filter((note) => {
-        return note.id != deletedNote;
-    });
+    var id = parseInt(req.params.id);
+      console.log(parseInt(req.params.id))
+    for (var i = 0; i < notesArray.length; i++) {
+        if (id === notesArray[i].id) {
+            notesArray.splice(i, 1);
+            return;
+    }};
 
-    console.log(notesArray)
-
-    fs.writeFile("db/db.json", JSON.stringify(deletedNote), (err) => {
+    fs.writeFile("db/db.json", JSON.stringify(notesArray), (err) => {
         if (err) throw err;
-        res.json(deletedNote);
+        res.send(notesArray);
     });
 });
 
