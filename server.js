@@ -12,7 +12,7 @@ var notesArray = [];
 // Sets up the Express.js application to handle data parsing.
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(express.static(path.join(__dirname, "/Develop/public")));
 // Routes
 // =============================================================
 
@@ -63,7 +63,7 @@ app.delete("/api/notes/:id", (req, res) => {
       });
     
     var deletedNote = req.params.id;
-    console.log("id: ",deletedNote);ß
+    console.log("id: ",deletedNote);
     
     notesArray = notesArray.filter(() => {
     

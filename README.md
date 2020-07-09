@@ -1,75 +1,101 @@
 # Note Taker
 
+[![NPM Version Badge](https://badge.fury.io/js/%40angular%2Fcore.svg)](https://badge.fury.io/js/%40angular%2Fcore)
+
+## Table of Contents
+*  [Description](#description)
+*  [User Story](#user-story)
+*  [Features of the Application](#features-of-the-application)
+*  [Preview of the Note Taker](#preview-of-the-note-taker)
+*  [Links](#links)
+*  [Installation](#installation)
+*  [Usage](#usage)
+*  [License](#license)
+*  [Tests](#tests)
+*  [Contributing](#contributing)
+*  [Questions](#questions)
+
 ## Description
 
-Create an application that can be used to write, save, and delete notes. This application will use an express backend and save and retrieve note data from a JSON file.
+For users that need to keep track of a lot of information, it's easy to forget or be unable to recall something important. Being able to take persistent notes allows users to have written information available when needed and allows users to improve their focus and boost their retention skills.
 
-* The application frontend has already been created, it's your job to build the backend and connect the two.
-
-* The following HTML routes should be created:
-
-  * GET `/notes` - Should return the `notes.html` file.
-
-  * GET `*` - Should return the `index.html` file
-
-* The application should have a `db.json` file on the backend that will be used to store and retrieve notes using the `fs` module.
-
-* The following API routes should be created:
-
-  * GET `/api/notes` - Should read the `db.json` file and return all saved notes as JSON.
-
-  * POST `/api/notes` - Should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
-
-  * DELETE `/api/notes/:id` - Should receive a query parameter containing the id of a note to delete. This means you'll need to find a way to give each note a unique `id` when it's saved. In order to delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
+Note Taker is an application that allows users to create and save notes in order to properly keep track of their tasks, improve their organization skills, and prioritize their duties. Users can also use the application to view and delete previously saved notes.
 
 ## User Story
+~~~
+AS A user, I want to be able to write and save notes  
+I WANT to be able to delete notes I've written before  
+SO THAT I can organize my thoughts and keep track of tasks I need to complete.
+~~~
 
-AS A user, I want to be able to write and save notes
+## Features of the Application
+~~~
+GIVEN an application that allows the user to write notes  
+WHEN I type text into the application to create a note and click the designated icon  
+THEN my note is saved onto the application  
+WHEN I navigate the application to a particular HTML route  
+THEN I will be able to view my previously saved notes  
+WHEN I click the designated "trash bin" icon  
+THEN I will be able to delete my previously saved notes
+~~~
 
-I WANT to be able to delete notes I've written before
+## Preview of the Note Taker
 
-SO THAT I can organize my thoughts and keep track of tasks I need to complete
+The following animation demonstrates the application's complete functionality:
 
-## Business Context
+![Note Taker Application]()
 
-For users that need to keep track of a lot of information, it's easy to forget or be unable to recall something important. Being able to take persistent notes allows users to have written information available when needed.
+The following animation provides a closer look at the notes being created (and saved) to the application:
 
-## Acceptance Criteria
+![Saved Note Preview]()
 
-Application should allow users to create and save notes.
+The following animation demonstrates the note being deleted from the application:
 
-Application should allow users to view previously saved notes.
+![Deleted Note Preview]()
 
-Application should allow users to delete previously saved notes.
+## Links
 
-## Deploying the App
+1. [Deployed Application](https://rh9891-note-taker.herokuapp.com/)
 
-You will not be able to deploy your server side code on GitHub pages. This app should be deployed on Heroku. Carefully follow the [Heroku Guide](../04-Supplemental/HerokuGuide.md) for getting your app deployed on Heroku.
+2. [Github Repository](https://github.com/rh9891/NoteTaker)
 
-- - -
 
-## Commit Early and Often
+## Installation
 
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for two reasons:
+The application requires the following dependencies and/or package managers:
+~~~
+npm install
+~~~
 
-* Your commit history is a signal to employers that you are actively working on projects and learning new skills.
+~~~
+npm install express --save
+~~~
 
-* Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
+## Usage
 
-Follow these guidelines for committing:
+An example of usage when first launching the application to access it from the command line:
+~~~
+node server.js
+~~~
 
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
+## License
 
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
+This application does not currently have any licenses.
 
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
+The user is not permitted to use, modify, or share any parts of it. Though the code for this application is hosted on Github, where you are allowed to view and fork the code, this does not imply that the user is permitted to use, modify, or share the contents of this application for any purpose.
 
-* Test your application before you commit to ensure functionality at every step in the development process.
+## Tests
 
-We would like you to have well over 200 commits by graduation, so commit early and often!
+The application requires the local computer to test the application into the server and check its functionality on a specified port by using the following:
 
-## Submission on BCS
+~~~
+localhost:3333
+~~~
 
-You are required to submit the following:
+## Contributing
 
-* The URL of the deployed application. This should be the link to the url provided by Heroku. Be sure not to submit a link to the Heroku dashboard.
+If you would like to contribute to this repository, please contact me via [Github](https://github.com/rh9891).
+
+## Questions
+
+If you have any questions, comments, or issues regarding this command line interface application, please do not hesitate to contact me through [Github](https://github.com/rh9891).
