@@ -43,15 +43,15 @@ THEN I will be able to delete my previously saved notes
 
 The following animation demonstrates the application's complete functionality:
 
-![Note Taker Application]()
+![Note Taker Application](https://github.com/rh9891/NoteTaker/blob/master/public/assets/css/images/noteTakerApplication.gif)
 
 The following animation provides a closer look at the notes being created (and saved) to the application:
 
-![Saved Note Preview]()
+![Saved Note Preview](https://github.com/rh9891/NoteTaker/blob/master/public/assets/css/images/savedNotePreview.gif)
 
 The following animation demonstrates the note being deleted from the application:
 
-![Deleted Note Preview]()
+![Deleted Note Preview](https://github.com/rh9891/NoteTaker/blob/master/public/assets/css/images/deletedNotePreview.gif)
 
 ## Links
 
