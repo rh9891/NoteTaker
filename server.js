@@ -65,8 +65,8 @@ app.delete("/api/notes/:id", (req, res) => {
     var deletedNote = req.params.id;
     console.log("id: ",deletedNote);
     
-    notesArray = notesArray.filter(() => {
-    
+    notesArray = notesArray.filter((note) => {
+        return note.id != deletedNote;
     });
 
     console.log(notesArray)
