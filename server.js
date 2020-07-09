@@ -31,6 +31,7 @@ app.get("/api/notes", (req, res) => {
 
 // This is the route that receives a new note to save on the request body, adds it to the "db.json" file, and then returns the new note to the user.
 app.post("/api/notes", (req, res) => {
+    console.log("save routes")
     fs.readFile("/db/db.json", (err, data) => {
         console.log(data);
         // Creates a variable to get information from the "db.json" file, which is the array of notes. FS reads things as string, so JSON.parse() is needed to convert.
@@ -62,6 +63,7 @@ app.delete("/api/notes/:id", (req, res) => {
       });
     
     var deletedNote = req.params.id;
+    console.log("id: ",deletedNote);ß
     
     notesArray = notesArray.filter(() => {
     
